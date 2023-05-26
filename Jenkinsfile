@@ -4,19 +4,19 @@ pipeline {
 	stages {
 		stage('Fetch Code') {
 			steps {
-				echo 'Fetching code'
+				git branch: 'main', url: 'https://github.com/helpingpeopletolearn/excelr-eveng.git'
 			}
 		}
 
 		stage('Install apache') {
 			steps {
-				echo 'Install apache'
+				sh 'sudo apt install apache2 -y'
 			}
 		}
 
 		stage('Deploy Application') {
 			steps {
-				echo 'Deploying Application'
+				sh 'sudo cp -R * /var/www/html/'
 			}
 		}
 
